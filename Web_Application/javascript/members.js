@@ -38,7 +38,7 @@ if (!groupName) {
 });
 
 // get data from json file
-$.getJSON(`../${groupName}_data.json`, function(data) {
+$.getJSON(`./${groupName}_data.json`, function(data) {
     let leaderboard = {};
     let allMembers = new Set(data.collaborators);
     let groupName = data.group_name;

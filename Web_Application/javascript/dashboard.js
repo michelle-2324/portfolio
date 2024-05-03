@@ -37,7 +37,7 @@ if (!groupName) {
 });
 
 // for dashboard content
-fetch('../' + groupName + '_data.json')
+fetch('./' + groupName + '_data.json')
   .then(response => response.json())
   .then(data => {
 
@@ -281,7 +281,7 @@ fetch('../' + groupName + '_data.json')
     document.getElementById('milestoneList').innerHTML = html;
 
     // fetch data
-    fetch('../' + groupName + '_data.json')
+    fetch('./' + groupName + '_data.json')
     .then(response => response.json())
     .then(data => {
 

@@ -35,7 +35,7 @@ function calculateActivitiesByEvents(group) {
 // Function to create the chart
 async function createChart() {
     // Load the JSON data for each group and calculate the total activities
-    const groups = await Promise.all(selectedGroups.map(groupName => loadJson(`../${groupName}_data.json`)));
+    const groups = await Promise.all(selectedGroups.map(groupName => loadJson(`./${groupName}_data.json`)));
 
     const comparisonType = document.getElementById('comparisonType').value;
     let labels;
@@ -110,7 +110,7 @@ createChart();
 async function generateLeaderboard() {
     // Fetch the data for all selected groups
     let groupDataPromises = selectedGroups.map((groupName, index) => {
-        return loadJson(`../${groupName}_data.json`).then(data => {
+        return loadJson(`./${groupName}_data.json`).then(data => {
             return {
                 data: data,
                 color: groupColors[index % groupColors.length]
@@ -163,7 +163,7 @@ async function generateStudentLeaderboard() {
 
     for (let i = 0; i < selectedGroups.length; i++) {
         let groupName = selectedGroups[i];
-        let data = await loadJson(`../${groupName}_data.json`);
+        let data = await loadJson(`./${groupName}_data.json`);
 
         for (let date of data.dates) {
             for (let contributorName in date.contributors) {

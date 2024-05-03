@@ -117,7 +117,7 @@ removeTokenButton.addEventListener('click', function() {
 
 // direct the user to the index page
 document.getElementById('saveButton').addEventListener('click', function() {
-    window.location.href = '../index.html';
+    window.location.href = './index.html';
 });
 
 // Load the state from sessionStorage

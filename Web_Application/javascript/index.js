@@ -5,9 +5,9 @@ return await response.json();
 
 // Load and display groups
 async function loadAndDisplayGroups() {
-const group1 = await loadJson('../project-group1_data.json');
-const group2 = await loadJson('../project-group2_data.json');
-const group3 = await loadJson('../project-group3_data.json');
+const group1 = await loadJson('./project-group1_data.json');
+const group2 = await loadJson('./project-group2_data.json');
+const group3 = await loadJson('./project-group3_data.json');
 let groups = [group1, group2, group3];
 
 // Create sort and filter options
