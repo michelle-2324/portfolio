@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./css/index.css">
+  <title>Setting</title>
+  <style>
+    .card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 5px;
+}
+  </style>
+</head>
+
+<body>
+   <!-- Start of the navigation bar -->
+  <nav class="navbar navbar-expand-sm navbar-light bg-custom">
+    <div class="container">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="#">Git<span class="ACT" style="color: #ff4646;">Act</span>Assistant</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" onclick="event.preventDefault(); location.href=window.location.href;">Setting</a>
+        </li>
+      </ul>
+      <button class="btn btn-primary ml-auto" id="logoutButton">Logout</button>
+    </div>
+  </nav>
+  
+  <!-- Start of the main content -->
+  <div class="container mt-4">
+
+    <!-- Start of the organizations card -->
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="card box-shadow">
+                <div class="card-title">Your Organizations</div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Add Organizations" aria-label="Enter New Organizations" aria-describedby="button-addon2" id="orgInput">
+                        <button class="btn btn-outline-secondary" type="button" id="addOrgButton">Add</button>
+                    </div>
+                    <div class="list-group" id="orgListGroup">
+                    </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-md-end">
+            <button class="btn btn-danger" type="button" id="removeOrgButton" style="display: none;">Remove</button>    
+        </div>
+    </div>
+
+    <!-- Start of the tokens card -->
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="card box-shadow">
+                <div class="card-title">Your GitHub Tokens</div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Add new token" aria-label="Add new token" aria-describedby="button-addon2" id="tokenInput">
+                        <button class="btn btn-outline-secondary" type="button" id="addTokenButton">Add</button>
+                    </div>
+                    <div class="list-group" id="tokenListGroup">
+                    </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-md-end">
+            <button class="btn btn-danger" type="button" id="removeTokenButton" style="display: none;">Remove</button>    
+        </div>
+    </div>
+
+    <!-- Start of the save button -->
+    <div class="row">
+        <div class="d-flex justify-content-center">
+            <button id="saveButton" class="btn btn-primary mt-2">Proceed</button>
+        </div>
+    </div>
+</div>
+
+  <script src="./javascript/setting.js"></script>
+</body>
+</html>

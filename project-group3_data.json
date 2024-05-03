@@ -1,0 +1,489 @@
+{
+    "group_name": "project-group3",
+    "collaborators": [
+        "crimson_tiger",
+        "moonlight_dancer",
+        "phoenix_blaze",
+        "skywalker89",
+        "j-davis-321"
+    ],
+    "contributors": [
+        {
+            "login": "phoenix_blaze",
+            "contributions": 6
+        },
+        {
+            "login": "crimson_tiger",
+            "contributions": 5
+        },
+        {
+            "login": "skywalker89",
+            "contributions": 1
+        },
+        {
+            "login": "j-davis-321",
+            "contributions": 1
+        },
+        {
+            "login": "moonlight_dancer",
+            "contributions": 1
+        }
+    ],
+    "issues": [
+        {
+            "login": "crimson_tiger",
+            "labels": [
+                "enhancement",
+                "Richard"
+            ],
+            "name": "[Feedback from Richard]AI-Powered Assistance",
+            "state": "open",
+            "created_at": "2024-03-20T09:57:42Z"
+        },
+        {
+            "login": "crimson_tiger",
+            "labels": [
+                "enhancement",
+                "Richard"
+            ],
+            "name": "[Feedback from Richard]Performance Comparison and Highlighting",
+            "state": "open",
+            "created_at": "2024-03-20T09:56:21Z"
+        },
+        {
+            "login": "crimson_tiger",
+            "labels": [
+                "enhancement",
+                "Richard"
+            ],
+            "name": "[Feedback from Richard]Group Activities Summary",
+            "state": "open",
+            "created_at": "2024-03-20T09:55:40Z"
+        },
+        {
+            "login": "crimson_tiger",
+            "labels": [
+                "enhancement",
+                "Richard"
+            ],
+            "name": "[Feedback from Richard]Comparison Tools for Groups",
+            "state": "open",
+            "created_at": "2024-03-20T09:54:18Z"
+        },
+        {
+            "login": "crimson_tiger",
+            "labels": [
+                "enhancement",
+                "Richard"
+            ],
+            "name": "[Feedback from Richard]Dashboard Page Interactivity Challenges",
+            "state": "open",
+            "created_at": "2024-03-20T09:51:08Z"
+        },
+        {
+            "login": "phoenix_blaze",
+            "labels": [],
+            "name": "Add navigation bars and buttons for the pages instead of using index.…",
+            "state": "closed",
+            "created_at": "2024-03-18T10:54:24Z"
+        },
+        {
+            "login": "j-davis-321",
+            "labels": [
+                "enhancement"
+            ],
+            "name": "[Feature] Add forget password button in login page",
+            "state": "open",
+            "created_at": "2024-03-18T07:51:24Z"
+        },
+        {
+            "login": "j-davis-321",
+            "labels": [
+                "enhancement"
+            ],
+            "name": "[Feature] Limit the login attempts in the login page",
+            "state": "open",
+            "created_at": "2024-03-18T07:44:43Z"
+        },
+        {
+            "login": "phoenix_blaze",
+            "labels": [
+                "bug"
+            ],
+            "name": "[Defects] Failure to display JavaScript content in index page",
+            "state": "closed",
+            "created_at": "2024-03-17T14:51:28Z"
+        },
+        {
+            "login": "phoenix_blaze",
+            "labels": [
+                "documentation"
+            ],
+            "name": "[Documentation] Interface Design of application",
+            "state": "open",
+            "created_at": "2024-03-12T02:15:30Z"
+        },
+        {
+            "login": "crimson_tiger",
+            "labels": [],
+            "name": "Issue testing",
+            "state": "closed",
+            "created_at": "2024-02-07T02:55:53Z"
+        }
+    ],
+    "comments": [
+        {
+            "user_login": "crimson_tiger",
+            "created_at": "2024-02-07T02:56:02Z"
+        },
+        {
+            "user_login": "crimson_tiger",
+            "created_at": "2024-02-07T02:56:07Z"
+        },
+        {
+            "user_login": "crimson_tiger",
+            "created_at": "2024-02-07T02:56:14Z"
+        },
+        {
+            "user_login": "phoenix_blaze",
+            "created_at": "2024-03-17T15:22:28Z"
+        },
+        {
+            "user_login": "j-davis-321",
+            "created_at": "2024-03-26T11:59:28Z"
+        },
+        {
+            "user_login": "j-davis-321",
+            "created_at": "2024-03-26T12:06:35Z"
+        },
+        {
+            "user_login": "j-davis-321",
+            "created_at": "2024-03-26T12:14:37Z"
+        },
+        {
+            "user_login": "phoenix_blaze",
+            "created_at": "2024-03-26T16:06:18Z"
+        },
+        {
+            "user_login": "j-davis-321",
+            "created_at": "2024-03-26T16:06:25Z"
+        }
+    ],
+    "commits": [
+        {
+            "author_name": "moonlight_dancer",
+            "author_date": "2024-03-26T16:06:25Z",
+            "stats": {
+                "total": 201,
+                "additions": 179,
+                "deletions": 22
+            }
+        },
+        {
+            "author_name": "j-davis-321",
+            "author_date": "2024-03-18T22:13:54Z",
+            "stats": {
+                "total": 78,
+                "additions": 56,
+                "deletions": 22
+            }
+        },
+        {
+            "author_name": "phoenix_blaze",
+            "author_date": "2024-03-18T11:16:57Z",
+            "stats": {
+                "total": 48,
+                "additions": 26,
+                "deletions": 22
+            }
+        },
+        {
+            "author_name": "phoenix_blaze",
+            "author_date": "2024-03-18T10:54:41Z",
+            "stats": {
+                "total": 114,
+                "additions": 104,
+                "deletions": 10
+            }
+        },
+        {
+            "author_name": "phoenix_blaze",
+            "author_date": "2024-03-17T15:10:01Z",
+            "stats": {
+                "total": 114,
+                "additions": 104,
+                "deletions": 10
+            }
+        },
+        {
+            "author_name": "skywalker89",
+            "author_date": "2024-03-17T15:09:15Z",
+            "stats": {
+                "total": 27,
+                "additions": 26,
+                "deletions": 1
+            }
+        },
+        {
+            "author_name": "phoenix_blaze",
+            "author_date": "2024-03-12T16:07:09Z",
+            "stats": {
+                "total": 594,
+                "additions": 594,
+                "deletions": 0
+            }
+        },
+        {
+            "author_name": "phoenix_blaze",
+            "author_date": "2024-03-12T09:18:25Z",
+            "stats": {
+                "total": 141,
+                "additions": 141,
+                "deletions": 0
+            }
+        },
+        {
+            "author_name": "phoenix_blaze",
+            "author_date": "2024-03-12T09:05:49Z",
+            "stats": {
+                "total": 8,
+                "additions": 4,
+                "deletions": 4
+            }
+        },
+        {
+            "author_name": "phoenix_blaze",
+            "author_date": "2024-03-12T04:40:55Z",
+            "stats": {
+                "total": 111,
+                "additions": 111,
+                "deletions": 0
+            }
+        },
+        {
+            "author_name": "crimson_tiger",
+            "author_date": "2024-02-07T06:40:52Z",
+            "stats": {
+                "total": 52,
+                "additions": 51,
+                "deletions": 1
+            }
+        },
+        {
+            "author_name": "crimson_tiger",
+            "author_date": "2024-02-07T03:38:03Z",
+            "stats": {
+                "total": 182,
+                "additions": 106,
+                "deletions": 76
+            }
+        },
+        {
+            "author_name": "crimson_tiger",
+            "author_date": "2024-02-07T03:10:15Z",
+            "stats": {
+                "total": 133,
+                "additions": 57,
+                "deletions": 76
+            }
+        },
+        {
+            "author_name": "crimson_tiger",
+            "author_date": "2024-02-07T02:44:45Z",
+            "stats": {
+                "total": 88,
+                "additions": 81,
+                "deletions": 7
+            }
+        },
+        {
+            "author_name": "crimson_tiger",
+            "author_date": "2024-02-07T02:29:49Z",
+            "stats": {
+                "total": 21,
+                "additions": 21,
+                "deletions": 0
+            }
+        }
+    ],
+    "pull_requests": [
+        {
+            "state": "open",
+            "login": "crimson_tiger",
+            "created_at": "2024-03-20T09:57:42Z",
+            "closed_at": null
+        },
+        {
+            "state": "open",
+            "login": "phoenix_blaze",
+            "created_at": "2024-03-18T10:54:24Z",
+            "closed_at": null
+        }
+    ],
+    "milestones": [
+        {
+            "title": "Backlog",
+            "open_issues": 4,
+            "closed_issues": 1,
+            "state": "open",
+            "created_at": "2024-03-01T10:30:19Z",
+            "updated_at": "2024-03-24T02:28:28Z",
+            "due_on": null,
+            "closed_at": null
+        },
+        {
+            "title": "Backlog Candidates",
+            "open_issues": 2,
+            "closed_issues": 1,
+            "state": "closed",
+            "created_at": "2024-02-01T10:30:19Z",
+            "updated_at": "2024-02-28T02:28:28Z",
+            "due_on": null,
+            "closed_at": null
+        }
+    ],
+    "dates": [
+        {
+            "date": "2024-03-12",
+            "events": {
+                "comments": 0,
+                "pull_requests": 0,
+                "issues": 1,
+                "commits": 4
+            },
+            "contributors": {
+                "phoenix_blaze": {
+                    "commits": 4,
+                    "pull_requests": 0,
+                    "issues": 1,
+                    "comments": 0,
+                    "metrics": 14
+                }
+            },
+            "total_metrics": 14
+        },
+        {
+            "date": "2024-02-07",
+            "events": {
+                "comments": 3,
+                "pull_requests": 0,
+                "issues": 1,
+                "commits": 5
+            },
+            "contributors": {
+                "crimson_tiger": {
+                    "commits": 5,
+                    "pull_requests": 0,
+                    "issues": 1,
+                    "comments": 3,
+                    "metrics": 20
+                }
+            },
+            "total_metrics": 20
+        },
+        {
+            "date": "2024-03-18",
+            "events": {
+                "comments": 0,
+                "pull_requests": 1,
+                "issues": 3,
+                "commits": 3
+            },
+            "contributors": {
+                "phoenix_blaze": {
+                    "commits": 2,
+                    "pull_requests": 1,
+                    "issues": 1,
+                    "comments": 0,
+                    "metrics": 11
+                },
+                "j-davis-321": {
+                    "commits": 1,
+                    "pull_requests": 0,
+                    "issues": 2,
+                    "comments": 0,
+                    "metrics": 4
+                }
+            },
+            "total_metrics": 17
+        },
+        {
+            "date": "2024-03-17",
+            "events": {
+                "comments": 1,
+                "pull_requests": 0,
+                "issues": 1,
+                "commits": 2
+            },
+            "contributors": {
+                "phoenix_blaze": {
+                    "commits": 1,
+                    "pull_requests": 0,
+                    "issues": 1,
+                    "comments": 1,
+                    "metrics": 6
+                },
+                "skywalker89": {
+                    "commits": 1,
+                    "pull_requests": 0,
+                    "issues": 0,
+                    "comments": 0,
+                    "metrics": 3
+                }
+            },
+            "total_metrics": 9
+        },
+        {
+            "date": "2024-03-20",
+            "events": {
+                "comments": 0,
+                "pull_requests": 1,
+                "issues": 0,
+                "commits": 0
+            },
+            "contributors": {
+                "crimson_tiger": {
+                    "commits": 0,
+                    "pull_requests": 1,
+                    "issues": 0,
+                    "comments": 0,
+                    "metrics": 4
+                }
+            },
+            "total_metrics": 4
+        },
+        {
+            "date": "2024-03-26",
+            "events": {
+                "comments": 5,
+                "pull_requests": 0,
+                "issues": 0,
+                "commits": 1
+            },
+            "contributors": {
+                "phoenix_blaze": {
+                    "commits": 0,
+                    "pull_requests": 0,
+                    "issues": 0,
+                    "comments": 1,
+                    "metrics": 1
+                },
+                "j-davis-321": {
+                    "commits": 0,
+                    "pull_requests": 0,
+                    "issues": 0,
+                    "comments": 4,
+                    "metrics": 4
+                },
+                "moonlight_dancer": {
+                    "commits": 1,
+                    "pull_requests": 0,
+                    "issues": 0,
+                    "comments": 0,
+                    "metrics": 3
+                }
+            },
+            "total_metrics": 8
+        }
+    ]
+}

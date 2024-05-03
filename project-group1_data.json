@@ -1,0 +1,442 @@
+{
+    "group_name": "project-group1",
+    "collaborators": [
+        "mwilliams22",
+        "sbrown456",
+        "omiller--00",
+        "dthompson_7y",
+        "imartinez444",
+        "aanderson"
+    ],
+    "contributors": [
+        {
+            "login": "dthompson_7y",
+            "contributions": 8
+        },
+        {
+            "login": "sbrown456",
+            "contributions": 5
+        },
+        {
+            "login": "imartinez444",
+            "contributions": 1
+        }
+    ],
+    "issues": [
+        {
+            "login": "sbrown456",
+            "labels": [
+                "enhancement",
+                "Richard"
+            ],
+            "name": "[Feedback from Richard]AI-Powered Assistance",
+            "state": "open",
+            "created_at": "2024-03-20T09:57:42Z"
+        },
+        {
+            "login": "sbrown456",
+            "labels": [
+                "enhancement"
+            ],
+            "name": "[Feedback from Richard]Performance Comparison and Highlighting",
+            "state": "open",
+            "created_at": "2024-03-20T09:56:21Z"
+        },
+        {
+            "login": "sbrown456",
+            "labels": [
+                "enhancement"
+            ],
+            "name": "[Feedback from Richard]Group Activities Summary",
+            "state": "open",
+            "created_at": "2024-03-20T09:55:40Z"
+        },
+        {
+            "login": "sbrown456",
+            "labels": [
+                "enhancement"
+            ],
+            "name": "[Feedback from Richard]Comparison Tools for Groups",
+            "state": "open",
+            "created_at": "2024-03-20T09:54:18Z"
+        },
+        {
+            "login": "sbrown456",
+            "labels": [
+                "enhancement"
+            ],
+            "name": "[Feedback from Richard]Dashboard Page Interactivity Challenges",
+            "state": "open",
+            "created_at": "2024-03-20T09:51:08Z"
+        },
+        {
+            "login": "dthompson_7y",
+            "labels": [],
+            "name": "Add navigation bars and buttons for the pages instead of using index.…",
+            "state": "closed",
+            "created_at": "2024-03-18T10:54:24Z"
+        },
+        {
+            "login": "aanderson",
+            "labels": [
+                "enhancement"
+            ],
+            "name": "[Feature] Add forget password button in login page",
+            "state": "open",
+            "created_at": "2024-03-18T07:51:24Z"
+        },
+        {
+            "login": "aanderson",
+            "labels": [
+                "enhancement"
+            ],
+            "name": "[Feature] Limit the login attempts in the login page",
+            "state": "closed",
+            "created_at": "2024-03-18T07:44:43Z"
+        },
+        {
+            "login": "dthompson_7y",
+            "labels": [
+                "bug"
+            ],
+            "name": "[Defects] Failure to display JavaScript content in index page",
+            "state": "closed",
+            "created_at": "2024-03-17T14:51:28Z"
+        },
+        {
+            "login": "dthompson_7y",
+            "labels": [
+                "documentation"
+            ],
+            "name": "[Documentation] Interface Design of application",
+            "state": "open",
+            "created_at": "2024-03-12T02:15:30Z"
+        },
+        {
+            "login": "sbrown456",
+            "labels": [],
+            "name": "Issue testing",
+            "state": "closed",
+            "created_at": "2024-02-07T02:55:53Z"
+        }
+    ],
+    "comments": [
+        {
+            "user_login": "sbrown456",
+            "created_at": "2024-02-07T02:56:02Z"
+        },
+        {
+            "user_login": "sbrown456",
+            "created_at": "2024-02-07T02:56:07Z"
+        },
+        {
+            "user_login": "sbrown456",
+            "created_at": "2024-02-07T02:56:14Z"
+        },
+        {
+            "user_login": "dthompson_7y",
+            "created_at": "2024-03-17T15:22:28Z"
+        },
+        {
+            "user_login": "aanderson",
+            "created_at": "2024-03-26T11:59:28Z"
+        },
+        {
+            "user_login": "aanderson",
+            "created_at": "2024-03-26T12:06:35Z"
+        },
+        {
+            "user_login": "aanderson",
+            "created_at": "2024-03-26T12:14:37Z"
+        },
+        {
+            "user_login": "dthompson_7y",
+            "created_at": "2024-03-26T16:06:18Z"
+        }
+    ],
+    "commits": [
+        {
+            "author_name": "dthompson_7y",
+            "author_date": "2024-03-26T15:54:12Z",
+            "stats": {
+                "total": 290,
+                "additions": 290,
+                "deletions": 0
+            }
+        },
+        {
+            "author_name": "dthompson_7y",
+            "author_date": "2024-03-18T11:16:57Z",
+            "stats": {
+                "total": 48,
+                "additions": 26,
+                "deletions": 22
+            }
+        },
+        {
+            "author_name": "dthompson_7y",
+            "author_date": "2024-03-18T11:07:12Z",
+            "stats": {
+                "total": 191,
+                "additions": 74,
+                "deletions": 117
+            }
+        },
+        {
+            "author_name": "dthompson_7y",
+            "author_date": "2024-03-18T10:54:41Z",
+            "stats": {
+                "total": 114,
+                "additions": 104,
+                "deletions": 10
+            }
+        },
+        {
+            "author_name": "dthompson_7y",
+            "author_date": "2024-03-17T15:10:01Z",
+            "stats": {
+                "total": 114,
+                "additions": 104,
+                "deletions": 10
+            }
+        },
+        {
+            "author_name": "imartinez444",
+            "author_date": "2024-03-17T15:09:15Z",
+            "stats": {
+                "total": 27,
+                "additions": 26,
+                "deletions": 1
+            }
+        },
+        {
+            "author_name": "dthompson_7y",
+            "author_date": "2024-03-12T16:07:09Z",
+            "stats": {
+                "total": 594,
+                "additions": 594,
+                "deletions": 0
+            }
+        },
+        {
+            "author_name": "dthompson_7y",
+            "author_date": "2024-03-12T09:18:25Z",
+            "stats": {
+                "total": 141,
+                "additions": 141,
+                "deletions": 0
+            }
+        },
+        {
+            "author_name": "dthompson_7y",
+            "author_date": "2024-03-12T09:05:49Z",
+            "stats": {
+                "total": 8,
+                "additions": 4,
+                "deletions": 4
+            }
+        },
+        {
+            "author_name": "dthompson_7y",
+            "author_date": "2024-03-12T04:40:55Z",
+            "stats": {
+                "total": 111,
+                "additions": 111,
+                "deletions": 0
+            }
+        },
+        {
+            "author_name": "sbrown456",
+            "author_date": "2024-02-07T06:40:52Z",
+            "stats": {
+                "total": 52,
+                "additions": 51,
+                "deletions": 1
+            }
+        },
+        {
+            "author_name": "sbrown456",
+            "author_date": "2024-02-07T03:38:03Z",
+            "stats": {
+                "total": 182,
+                "additions": 106,
+                "deletions": 76
+            }
+        },
+        {
+            "author_name": "sbrown456",
+            "author_date": "2024-02-07T03:10:15Z",
+            "stats": {
+                "total": 133,
+                "additions": 57,
+                "deletions": 76
+            }
+        },
+        {
+            "author_name": "sbrown456",
+            "author_date": "2024-02-07T02:44:45Z",
+            "stats": {
+                "total": 88,
+                "additions": 81,
+                "deletions": 7
+            }
+        },
+        {
+            "author_name": "sbrown456",
+            "author_date": "2024-02-07T02:29:49Z",
+            "stats": {
+                "total": 21,
+                "additions": 21,
+                "deletions": 0
+            }
+        }
+    ],
+    "pull_requests": [
+        {
+            "state": "closed",
+            "login": "dthompson_7y",
+            "created_at": "2024-03-18T10:54:24Z",
+            "closed_at": "2024-03-18T10:54:41Z"
+        }
+    ],
+    "milestones": [
+        {
+            "title": "March 2024",
+            "open_issues": 4,
+            "closed_issues": 2,
+            "state": "open",
+            "created_at": "2024-03-01T10:30:19Z",
+            "updated_at": "2024-03-24T02:28:28Z",
+            "due_on": "2024-03-31T23:59:00Z",
+            "closed_at": null
+        },
+        {
+            "title": "February 2024",
+            "open_issues": 0,
+            "closed_issues": 2,
+            "state": "closed",
+            "created_at": "2024-02-01T10:30:19Z",
+            "updated_at": "2024-02-28T02:28:28Z",
+            "due_on": "2024-02-29T23:59:00Z",
+            "closed_at": "2024-02-29T23:59:00Z"
+        }
+    ],
+    "dates": [
+        {
+            "date": "2024-03-12",
+            "events": {
+                "comments": 0,
+                "pull_requests": 0,
+                "issues": 1,
+                "commits": 4
+            },
+            "contributors": {
+                "dthompson_7y": {
+                    "commits": 4,
+                    "pull_requests": 0,
+                    "issues": 1,
+                    "comments": 0,
+                    "metrics": 14
+                }
+            },
+            "total_metrics": 14
+        },
+        {
+            "date": "2024-02-07",
+            "events": {
+                "comments": 3,
+                "pull_requests": 0,
+                "issues": 1,
+                "commits": 5
+            },
+            "contributors": {
+                "sbrown456": {
+                    "commits": 5,
+                    "pull_requests": 0,
+                    "issues": 1,
+                    "comments": 3,
+                    "metrics": 20
+                }
+            },
+            "total_metrics": 20
+        },
+        {
+            "date": "2024-03-18",
+            "events": {
+                "comments": 0,
+                "pull_requests": 1,
+                "issues": 3,
+                "commits": 3
+            },
+            "contributors": {
+                "dthompson_7y": {
+                    "commits": 3,
+                    "pull_requests": 1,
+                    "issues": 1,
+                    "comments": 0,
+                    "metrics": 15
+                },
+                "aanderson": {
+                    "commits": 0,
+                    "pull_requests": 0,
+                    "issues": 2,
+                    "comments": 0,
+                    "metrics": 4
+                }
+            },
+            "total_metrics": 19
+        },
+        {
+            "date": "2024-03-17",
+            "events": {
+                "comments": 1,
+                "pull_requests": 0,
+                "issues": 1,
+                "commits": 2
+            },
+            "contributors": {
+                "dthompson_7y": {
+                    "commits": 1,
+                    "pull_requests": 0,
+                    "issues": 1,
+                    "comments": 1,
+                    "metrics": 6
+                },
+                "imartinez444": {
+                    "commits": 1,
+                    "pull_requests": 0,
+                    "issues": 0,
+                    "comments": 0,
+                    "metrics": 3
+                }
+            },
+            "total_metrics": 9
+        },
+        {
+            "date": "2024-03-26",
+            "events": {
+                "comments": 4,
+                "pull_requests": 0,
+                "issues": 0,
+                "commits": 1
+            },
+            "contributors": {
+                "dthompson_7y": {
+                    "commits": 1,
+                    "pull_requests": 0,
+                    "issues": 0,
+                    "comments": 1,
+                    "metrics": 4
+                },
+                "aanderson": {
+                    "commits": 0,
+                    "pull_requests": 0,
+                    "issues": 0,
+                    "comments": 3,
+                    "metrics": 3
+                }
+            },
+            "total_metrics": 7
+        }
+    ]
+}

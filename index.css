@@ -1,0 +1,20 @@
+.bg-custom {
+    background-color: #D5F0F2;
+    }
+    
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, 0.137); 
+    }
+
+.card {
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 5px;
+}
+
+.row {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}

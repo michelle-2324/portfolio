@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="./css/index.css"></link>
+  <title>AI-assistant</title>
+</head>
+<body>
+   <!-- <script src="./javascript/ai_assistant.js"></script> -->
+  <nav class="navbar navbar-expand-sm navbar-light bg-custom">
+    <div class="container">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Git<span class="ACT" style="color: #ff4646;">Act</span>Assistant</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="setting.html">Setting</a>
+        </li>
+      </ul>
+      <button class="btn btn-primary ml-auto">Logout</button>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="btn-group mt-3 ml-3">
+      <button id="dbButton" class="btn btn-outline-info">Dashboard</button>
+      <button id="memberButton" class="btn btn-outline-info">Members</button>
+      <button id="aiButton" class="btn btn-outline-info">AI Assistant</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>AI assistant</h1>
+    <div class="form-group mb-3">
+      <label for="promptInput">Prompt:</label>
+      <input type="text" class="form-control" id="promptInput", placeholder="Ask something...">
+      <button class="btn btn-primary mt-3" onclick="submitPrompt()">Submit</button>
+    </div>
+  
+	<div class="default-prompt-container mt-2">
+		<button class="btn btn-outline-primary mt-2 btn-default-prompt" onClick="setPromptAndSubmit('Who made the most contributions in format (group_name: login with most contributors)')">
+			Who made the most contributions?
+		</button>
+		<button class="btn btn-outline-primary mt-2 btn-default-prompt" onClick="setPromptAndSubmit('What is the most famous labels in issues?')">
+			What is the most famous labels in issues?
+		</button>
+		<button class="btn btn-outline-primary mt-2 btn-default-prompt" onClick="setPromptAndSubmit('Which group makes the most commits?')">
+			Which group makes the most commits?
+		</button>
+		<button class="btn btn-outline-primary mt-2 btn-default-prompt" onClick="setPromptAndSubmit('What is this?')">
+			What is this?
+		</button>
+	</div>
+	
+	
+	<div class="response-area-container">
+		<h1>Response</h1>
+		<div id="responseArea" class="mt-3"></div>
+	</div>
+  </div>
+  
+  <div id="gp1-data" class=" data-container"></div>
+  <div id="gp2-data" class=" data-container"></div>
+  <div id="gp3-data" class=" data-container"></div>
+  
+  <style>
+	#responseArea {
+		border: solid 2px gray;
+		padding: 1rem;
+		border-radius: 1rem;
+		font-size: 1.2rem;
+	}
+	
+	.response-area-container {
+		display: none;
+		margin-top: 1.5rem;
+	}
+	
+	.data-container {
+		display: none;
+	}
+	
+	.default-prompt-container {
+		margin-top: 2rem;
+		display: flex;
+		justify-content: space-between;
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+	
+	.btn-default-prompt {
+		/*width: 45%;*/
+		width: 100%;
+	}
+  </style>
+
+  <script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const groupName = decodeURIComponent(urlParams.get('group'));
+
+  function redirectToPage(pageName) {
+    window.location.href = pageName + '.html?group=' + encodeURIComponent(groupName);
+  }
+
+  document.getElementById('memberButton').addEventListener('click', function() {
+    redirectToPage('members');
+  });
+
+  document.getElementById('aiButton').addEventListener('click', function() {
+    sessionStorage.setItem('groupName', groupName);
+    redirectToPage('ai_assistant');
+  });
+
+  document.getElementById('dbButton').addEventListener('click', function() {
+    redirectToPage('dashboard');
+  });
+
+  window.addEventListener('load', function() {
+    if (!groupName) {
+      groupName = sessionStorage.getItem('groupName');
+      redirectToPage('ai_assistant');
+    }
+  });
+
+  window.addEventListener('load', function() {
+  var params = new URLSearchParams(window.location.search);
+  var groupName = params.get('group');
+
+  if (!groupName) {
+      groupName = sessionStorage.getItem('groupName');
+      window.location.href = 'ai_assistant.html?group=' + encodeURIComponent(groupName);
+  }
+  });
+  
+  function setPromptAndSubmit(value) {
+	document.getElementById('promptInput').value = value;
+	submitPrompt();
+	
+	document.getElementById('promptInput').value = '';
+  }
+
+  function submitPrompt() {
+    var prompt = document.getElementById('promptInput').value;
+    var readFileStr = "This is used for checking information by AI Assistant. ";
+	
+    // var fileList = ['./project-group1_data.json', './project-group2_data.json', './project-group3_data.json'];
+	// readFileStr = document.getElementById('gp1-data').innerHTML;
+	var readDataList = [];
+	
+	if (prompt.toLowerCase().includes('group1') || prompt.toLowerCase().includes('gp1')) {
+		readDataList.push('1');
+	}
+	if (prompt.toLowerCase().includes('group2') || prompt.toLowerCase().includes('gp2')) {
+		readDataList.push('2');
+	}
+	if (prompt.toLowerCase().includes('group3') || prompt.toLowerCase().includes('gp3')) {
+		readDataList.push('3');
+	}
+	
+	if (readDataList.length == 0) {
+		readFileStr += document.getElementById('gp1-data').innerHTML;
+		readFileStr += document.getElementById('gp2-data').innerHTML;
+		readFileStr += document.getElementById('gp3-data').innerHTML;
+	} else {
+		readDataList.forEach((data) => {
+			readFileStr += document.getElementById('gp' + data +'-data').innerHTML
+		});
+	}
+
+    var msg = [
+        {
+            "role": "system",
+            //"content": "Answer questions in funny style." 
+			"content": "Answer questions related to " + readFileStr + "."
+        },
+        { "role": "user", "content": prompt }
+    ];
+    fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+          "Authorization": "Bearer ",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          "model": "mistralai/mistral-7b-instruct:free",
+          "messages": msg,
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+	  const messageContent = data.choices[0].message.content;
+      document.getElementById('responseArea').textContent = messageContent;
+	  if (messageContent) {
+		document.getElementsByClassName('response-area-container')[0].style.display = "block";
+	  }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+    // askForAiAssistant(prompt);
+  }
+  </script>
+
+	<script>
+		const gp1Data = {
+		"group_name": "project-group1",
+		"collaborators": [
+			"mwilliams22",
+			"sbrown456",
+			"omiller--00",
+			"dthompson_7y",
+			"imartinez444",
+			"aanderson"
+		],
+		"contributors": [
+			{
+				"login": "dthompson_7y",
+				"contributions": 8
+			},
+			{
+				"login": "sbrown456",
+				"contributions": 5
+			},
+			{
+				"login": "imartinez444",
+				"contributions": 1
+			}
+		],
+		"issues": [
+			{
+				"login": "sbrown456",
+				"labels": [
+					"enhancement",
+					"Richard"
+				],
+				"name": "[Feedback from Richard]AI-Powered Assistance",
+				"state": "open",
+				"created_at": "2024-03-20T09:57:42Z"
+			},
+			{
+				"login": "sbrown456",
+				"labels": [
+					"enhancement"
+				],
+				"name": "[Feedback from Richard]Performance Comparison and Highlighting",
+				"state": "open",
+				"created_at": "2024-03-20T09:56:21Z"
+			},
+			{
+				"login": "sbrown456",
+				"labels": [
+					"enhancement"
+				],
+				"name": "[Feedback from Richard]Group Activities Summary",
+				"state": "open",
+				"created_at": "2024-03-20T09:55:40Z"
+			},
+			{
+				"login": "sbrown456",
+				"labels": [
+					"enhancement"
+				],
+				"name": "[Feedback from Richard]Comparison Tools for Groups",
+				"state": "open",
+				"created_at": "2024-03-20T09:54:18Z"
+			},
+			{
+				"login": "sbrown456",
+				"labels": [
+					"enhancement"
+				],
+				"name": "[Feedback from Richard]Dashboard Page Interactivity Challenges",
+				"state": "open",
+				"created_at": "2024-03-20T09:51:08Z"
+			},
+			{
+				"login": "dthompson_7y",
+				"labels": [],
+				"name": "Add navigation bars and buttons for the pages instead of using index.…",
+				"state": "closed",
+				"created_at": "2024-03-18T10:54:24Z"
+			},
+			{
+				"login": "aanderson",
+				"labels": [
+					"enhancement"
+				],
+				"name": "[Feature] Add forget password button in login page",
+				"state": "open",
+				"created_at": "2024-03-18T07:51:24Z"
+			},
+			{
+				"login": "aanderson",
+				"labels": [
+					"enhancement"
+				],
+				"name": "[Feature] Limit the login attempts in the login page",
+				"state": "closed",
+				"created_at": "2024-03-18T07:44:43Z"
+			},
+			{
+				"login": "dthompson_7y",
+				"labels": [
+					"bug"
+				],
+				"name": "[Defects] Failure to display JavaScript content in index page",
+				"state": "closed",
+				"created_at": "2024-03-17T14:51:28Z"
+			},
+			{
+				"login": "dthompson_7y",
+				"labels": [
+					"documentation"
+				],
+				"name": "[Documentation] Interface Design of application",
+				"state": "open",
+				"created_at": "2024-03-12T02:15:30Z"
+			},
+			{
+				"login": "sbrown456",
+				"labels": [],
+				"name": "Issue testing",
+				"state": "closed",
+				"created_at": "2024-02-07T02:55:53Z"
+			}
+		],
+		"comments": [
+			{
+				"user_login": "sbrown456",
+				"created_at": "2024-02-07T02:56:02Z"
+			},
+			{
+				"user_login": "sbrown456",
+				"created_at": "2024-02-07T02:56:07Z"
+			},
+			{
+				"user_login": "sbrown456",
+				"created_at": "2024-02-07T02:56:14Z"
+			},
+			{
+				"user_login": "dthompson_7y",
+				"created_at": "2024-03-17T15:22:28Z"
+			},
+			{
+				"user_login": "aanderson",
+				"created_at": "2024-03-26T11:59:28Z"
+			},
+			{
+				"user_login": "aanderson",
+				"created_at": "2024-03-26T12:06:35Z"
+			},
+			{
+				"user_login": "aanderson",
+				"created_at": "2024-03-26T12:14:37Z"
+			},
+			{
+				"user_login": "dthompson_7y",
+				"created_at": "2024-03-26T16:06:18Z"
+			}
+		],
+		"commits": [
+			{
+				"author_name": "dthompson_7y",
+				"author_date": "2024-03-26T15:54:12Z",
+				"stats": {
+					"total": 290,
+					"additions": 290,
+					"deletions": 0
+				}
+			},
+			{
+				"author_name": "dthompson_7y",
+				"author_date": "2024-03-18T11:16:57Z",
+				"stats": {
+					"total": 48,
+					"additions": 26,
+					"deletions": 22
+				}
+			},
+			{
+				"author_name": "dthompson_7y",
+				"author_date": "2024-03-18T11:07:12Z",
+				"stats": {
+					"total": 191,
+					"additions": 74,
+					"deletions": 117
+				}
+			},
+			{
+				"author_name": "dthompson_7y",
+				"author_date": "2024-03-18T10:54:41Z",
+				"stats": {
+					"total": 114,
+					"additions": 104,
+					"deletions": 10
+				}
+			},
+			{
+				"author_name": "dthompson_7y",
+				"author_date": "2024-03-17T15:10:01Z",
+				"stats": {
+					"total": 114,
+					"additions": 104,
+					"deletions": 10
+				}
+			},
+			{
+				"author_name": "imartinez444",
+				"author_date": "2024-03-17T15:09:15Z",
+				"stats": {
+					"total": 27,
+					"additions": 26,
+					"deletions": 1
+				}
+			},
+			{
+				"author_name": "dthompson_7y",
+				"author_date": "2024-03-12T16:07:09Z",
+				"stats": {
+					"total": 594,
+					"additions": 594,
+					"deletions": 0
+				}
+			},
+			{
+				"author_name": "dthompson_7y",
+				"author_date": "2024-03-12T09:18:25Z",
+				"stats": {
+					"total": 141,
+					"additions": 141,
+					"deletions": 0
+				}
+			},
+			{
+				"author_name": "dthompson_7y",
+				"author_date": "2024-03-12T09:05:49Z",
+				"stats": {
+					"total": 8,
+					"additions": 4,
+					"deletions": 4
+				}
+			},
+			{
+				"author_name": "dthompson_7y",
+				"author_date": "2024-03-12T04:40:55Z",
+				"stats": {
+					"total": 111,
+					"additions": 111,
+					"deletions": 0
+				}
+			},
+			{
+				"author_name": "sbrown456",
+				"author_date": "2024-02-07T06:40:52Z",
+				"stats": {
+					"total": 52,
+					"additions": 51,
+					"deletions": 1
+				}
+			},
+			{
+				"author_name": "sbrown456",
+				"author_date": "2024-02-07T03:38:03Z",
+				"stats": {
+					"total": 182,
+					"additions": 106,
+					"deletions": 76
+				}
+			},
+			{
+				"author_name": "sbrown456",
+				"author_date": "2024-02-07T03:10:15Z",
+				"stats": {
+					"total": 133,
+					"additions": 57,
+					"deletions": 76
+				}
+			},
+			{
+				"author_name": "sbrown456",
+				"author_date": "2024-02-07T02:44:45Z",
+				"stats": {
+					"total": 88,
+					"additions": 81,
+					"deletions": 7
+				}
+			},
+			{
+				"author_name": "sbrown456",
+				"author_date": "2024-02-07T02:29:49Z",
+				"stats": {
+					"total": 21,
+					"additions": 21,
+					"deletions": 0
+				}
+			}
+		],
+		"pull_requests": [
+			{
+				"state": "closed",
+				"login": "dthompson_7y",
+				"created_at": "2024-03-18T10:54:24Z",
+				"closed_at": "2024-03-18T10:54:41Z"
+			}
+		],
+		"milestones": [
+			{
+				"title": "March 2024",
+				"open_issues": 4,
+				"closed_issues": 2,
+				"state": "open",
+				"created_at": "2024-03-01T10:30:19Z",
+				"updated_at": "2024-03-24T02:28:28Z",
+				"due_on": "2024-03-31T23:59:00Z",
+				"closed_at": null
+			},
+			{
+				"title": "February 2024",
+				"open_issues": 0,
+				"closed_issues": 2,
+				"state": "closed",
+				"created_at": "2024-02-01T10:30:19Z",
+				"updated_at": "2024-02-28T02:28:28Z",
+				"due_on": "2024-02-29T23:59:00Z",
+				"closed_at": "2024-02-29T23:59:00Z"
+			}
+		],
+		"dates": [
+			{
+				"date": "2024-03-12",
+				"events": {
+					"comments": 0,
+					"pull_requests": 0,
+					"issues": 1,
+					"commits": 4
+				},
+				"contributors": {
+					"dthompson_7y": {
+						"commits": 4,
+						"pull_requests": 0,
+						"issues": 1,
+						"comments": 0,
+						"metrics": 14
+					}
+				},
+				"total_metrics": 14
+			},
+			{
+				"date": "2024-02-07",
+				"events": {
+					"comments": 3,
+					"pull_requests": 0,
+					"issues": 1,
+					"commits": 5
+				},
+				"contributors": {
+					"sbrown456": {
+						"commits": 5,
+						"pull_requests": 0,
+						"issues": 1,
+						"comments": 3,
+						"metrics": 20
+					}
+				},
+				"total_metrics": 20
+			},
+			{
+				"date": "2024-03-18",
+				"events": {
+					"comments": 0,
+					"pull_requests": 1,
+					"issues": 3,
+					"commits": 3
+				},
+				"contributors": {
+					"dthompson_7y": {
+						"commits": 3,
+						"pull_requests": 1,
+						"issues": 1,
+						"comments": 0,
+						"metrics": 15
+					},
+					"aanderson": {
+						"commits": 0,
+						"pull_requests": 0,
+						"issues": 2,
+						"comments": 0,
+						"metrics": 4
+					}
+				},
+				"total_metrics": 19
+			},
+			{
+				"date": "2024-03-17",
+				"events": {
+					"comments": 1,
+					"pull_requests": 0,
+					"issues": 1,
+					"commits": 2
+				},
+				"contributors": {
+					"dthompson_7y": {
+						"commits": 1,
+						"pull_requests": 0,
+						"issues": 1,
+						"comments": 1,
+						"metrics": 6
+					},
+					"imartinez444": {
+						"commits": 1,
+						"pull_requests": 0,
+						"issues": 0,
+						"comments": 0,
+						"metrics": 3
+					}
+				},
+				"total_metrics": 9
+			},
+			{
+				"date": "2024-03-26",
+				"events": {
+					"comments": 4,
+					"pull_requests": 0,
+					"issues": 0,
+					"commits": 1
+				},
+				"contributors": {
+					"dthompson_7y": {
+						"commits": 1,
+						"pull_requests": 0,
+						"issues": 0,
+						"comments": 1,
+						"metrics": 4
+					},
+					"aanderson": {
+						"commits": 0,
+						"pull_requests": 0,
+						"issues": 0,
+						"comments": 3,
+						"metrics": 3
+					}
+				},
+				"total_metrics": 7
+			}
+		]
+	};
+	
+	const gp2Data = {
+    "group_name": "project-group2",
+    "collaborators": [
+        "John-Doe",
+        "Jane-Smith",
+        "Alex-Johnson",
+        "Michael-Brown",
+        "Emily-Clark"
+    ],
+    "contributors": [
+        {
+            "login": "Jane-Smith",
+            "contributions": 1
+        },
+        {
+            "login": "Alex-Johnson",
+            "contributions": 1
+        },
+        {
+            "login": "Emily-Clark",
+            "contributions": 1
+        }
+    ],
+    "issues": [
+        {
+            "login": "Alex-Johnson",
+            "labels": [],
+            "name": "【Statement】 About the commit method",
+            "state": "open",
+            "created_at": "2024-03-26T15:55:54Z"
+        },
+        {
+            "login": "John-Doe",
+            "labels": [],
+            "name": "PULLS",
+            "state": "open",
+            "created_at": "2024-03-26T15:52:36Z"
+        },
+        {
+            "login": "Alex-Johnson",
+            "labels": [],
+            "name": "【Problem】About the data",
+            "state": "open",
+            "created_at": "2024-03-26T15:43:21Z"
+        },
+        {
+            "login": "Michael-Brown",
+            "labels": [],
+            "name": "Prototype",
+            "state": "closed",
+            "created_at": "2024-03-25T12:43:16Z"
+        },
+        {
+            "login": "John-Doe",
+            "labels": [],
+            "name": "Synchronize the code of the main branch",
+            "state": "closed",
+            "created_at": "2024-03-22T07:40:59Z"
+        },
+        {
+            "login": "John-Doe",
+            "labels": [],
+            "name": "Initialize java project",
+            "state": "open",
+            "created_at": "2024-03-22T07:23:37Z"
+        },
+        {
+            "login": "Emily-Clark",
+            "labels": [],
+            "name": "Prototype demo v1.1",
+            "state": "open",
+            "created_at": "2024-03-21T03:27:59Z"
+        },
+        {
+            "login": "Michael-Brown",
+            "labels": [],
+            "name": "Prototype demo v1.0",
+            "state": "open",
+            "created_at": "2024-03-20T09:53:21Z"
+        }
+    ],
+    "comments": [
+        {
+            "user_login": "Alex-Johnson",
+            "created_at": "2024-03-26T15:46:41Z"
+        },
+        {
+            "user_login": "John-Doe",
+            "created_at": "2024-03-26T15:47:48Z"
+        },
+        {
+            "user_login": "John-Doe",
+            "created_at": "2024-03-26T15:49:35Z"
+        },
+        {
+            "user_login": "John-Doe",
+            "created_at": "2024-03-26T15:51:14Z"
+        },
+        {
+            "user_login": "John-Doe",
+            "created_at": "2024-03-26T15:51:42Z"
+        },
+        {
+            "user_login": "John-Doe",
+            "created_at": "2024-03-26T15:52:04Z"
+        },
+        {
+            "user_login": "Alex-Johnson",
+            "created_at": "2024-03-26T15:57:32Z"
+        },
+        {
+            "user_login": "John-Doe",
+            "created_at": "2024-03-26T15:58:40Z"
+        }
+    ],
+    "commits": [
+        {
+            "author_name": "Emily-Clark",
+            "author_date": "2024-03-25T10:56:42Z",
+            "stats": {
+                "total": 3,
+                "additions": 3,
+                "deletions": 0
+            }
+        },
+        {
+            "author_name": "Jane-Smith",
+            "author_date": "2024-03-18T13:10:21Z",
+            "stats": {
+                "total": 3,
+                "additions": 3,
+                "deletions": 0
+            }
+        },
+        {
+            "author_name": "Alex-Johnson",
+            "author_date": "2024-03-18T12:50:11Z",
+            "stats": {
+                "total": 4,
+                "additions": 2,
+                "deletions": 2
+            }
+        }
+    ],
+    "pull_requests": [
+        {
+            "state": "closed",
+            "login": "Michael-Brown",
+            "created_at": "2024-03-25T12:43:16Z",
+            "closed_at": "2024-03-25T12:44:54Z"
+        },
+        {
+            "state": "closed",
+            "login": "John-Doe",
+            "created_at": "2024-03-22T07:40:58Z",
+            "closed_at": "2024-03-22T12:39:28Z"
+        },
+        {
+            "state": "open",
+            "login": "John-Doe",
+            "created_at": "2024-03-22T07:23:37Z",
+            "closed_at": null
+        }
+    ],
+    "milestones": [
+        {
+            "title": "March 2024",
+            "open_issues": 5,
+            "closed_issues": 0,
+            "state": "open",
+            "created_at": "2024-03-01T10:30:19Z",
+            "updated_at": "2024-03-24T02:28:28Z",
+            "due_on": "2024-03-31T23:59:00Z",
+            "closed_at": null
+        },
+        {
+            "title": "February 2024",
+            "open_issues": 0,
+            "closed_issues": 3,
+            "state": "closed",
+            "created_at": "2024-02-01T10:30:19Z",
+            "updated_at": "2024-02-28T02:28:28Z",
+            "due_on": "2024-02-29T23:59:00Z",
+            "closed_at": "2024-02-29T23:59:00Z"
+        }
+    ],
+    "dates": [
+        {
+            "date": "2024-03-18",
+            "events": {
+                "comments": 0,
+                "pull_requests": 0,
+                "issues": 0,
+                "commits": 2
+            },
+            "contributors": {
+                "Jane-Smith": {
+                    "commits": 1,
+                    "pull_requests": 0,
+                    "issues": 0,
+                    "comments": 0,
+                    "metrics": 3
+                },
+                "Alex-Johnson": {
+                    "commits": 1,
+                    "pull_requests": 0,
+                    "issues": 0,
+                    "comments": 0,
+                    "metrics": 3
+                }
+            },
+            "total_metrics": 6
+        },
+        {
+            "date": "2024-03-25",
+            "events": {
+                "comments": 0,
+                "pull_requests": 1,
+                "issues": 1,
+                "commits": 1
+            },
+            "contributors": {
+                "Emily-Clark": {
+                    "commits": 1,
+                    "pull_requests": 0,
+                    "issues": 0,
+                    "comments": 0,
+                    "metrics": 3
+                },
+                "Michael-Brown": {
+                    "commits": 0,
+                    "pull_requests": 1,
+                    "issues": 1,
+                    "comments": 0,
+                    "metrics": 6
+                }
+            },
+            "total_metrics": 9
+        },
+        {
+            "date": "2024-03-26",
+            "events": {
+                "comments": 8,
+                "pull_requests": 2,
+                "issues": 3,
+                "commits": 0
+            },
+            "contributors": {
+                "Alex-Johnson": {
+                    "commits": 0,
+                    "pull_requests": 0,
+                    "issues": 2,
+                    "comments": 2,
+                    "metrics": 4
+                },
+                "John-Doe": {
+                    "commits": 0,
+                    "pull_requests": 1,
+                    "issues": 1,
+                    "comments": 6,
+                    "metrics": 8
+                }
+            },
+            "total_metrics": 12
+        }
+    ]
+};
+
+	const gp3Data = {
+    "group_name": "project-group3",
+    "collaborators": [
+        "crimson_tiger",
+        "moonlight_dancer",
+        "phoenix_blaze",
+        "skywalker89",
+        "j-davis-321"
+    ],
+    "contributors": [
+        {
+            "login": "phoenix_blaze",
+            "contributions": 6
+        },
+        {
+            "login": "crimson_tiger",
+            "contributions": 5
+        },
+        {
+            "login": "skywalker89",
+            "contributions": 1
+        },
+        {
+            "login": "j-davis-321",
+            "contributions": 1
+        },
+        {
+            "login": "moonlight_dancer",
+            "contributions": 1
+        }
+    ],
+    "issues": [
+        {
+            "login": "crimson_tiger",
+            "labels": [
+                "enhancement",
+                "Richard"
+            ],
+            "name": "[Feedback from Richard]AI-Powered Assistance",
+            "state": "open",
+            "created_at": "2024-03-20T09:57:42Z"
+        },
+        {
+            "login": "crimson_tiger",
+            "labels": [
+                "enhancement",
+                "Richard"
+            ],
+            "name": "[Feedback from Richard]Performance Comparison and Highlighting",
+            "state": "open",
+            "created_at": "2024-03-20T09:56:21Z"
+        },
+        {
+            "login": "crimson_tiger",
+            "labels": [
+                "enhancement",
+                "Richard"
+            ],
+            "name": "[Feedback from Richard]Group Activities Summary",
+            "state": "open",
+            "created_at": "2024-03-20T09:55:40Z"
+        },
+        {
+            "login": "crimson_tiger",
+            "labels": [
+                "enhancement",
+                "Richard"
+            ],
+            "name": "[Feedback from Richard]Comparison Tools for Groups",
+            "state": "open",
+            "created_at": "2024-03-20T09:54:18Z"
+        },
+        {
+            "login": "crimson_tiger",
+            "labels": [
+                "enhancement",
+                "Richard"
+            ],
+            "name": "[Feedback from Richard]Dashboard Page Interactivity Challenges",
+            "state": "open",
+            "created_at": "2024-03-20T09:51:08Z"
+        },
+        {
+            "login": "phoenix_blaze",
+            "labels": [],
+            "name": "Add navigation bars and buttons for the pages instead of using index.…",
+            "state": "closed",
+            "created_at": "2024-03-18T10:54:24Z"
+        },
+        {
+            "login": "j-davis-321",
+            "labels": [
+                "enhancement"
+            ],
+            "name": "[Feature] Add forget password button in login page",
+            "state": "open",
+            "created_at": "2024-03-18T07:51:24Z"
+        },
+        {
+            "login": "j-davis-321",
+            "labels": [
+                "enhancement"
+            ],
+            "name": "[Feature] Limit the login attempts in the login page",
+            "state": "open",
+            "created_at": "2024-03-18T07:44:43Z"
+        },
+        {
+            "login": "phoenix_blaze",
+            "labels": [
+                "bug"
+            ],
+            "name": "[Defects] Failure to display JavaScript content in index page",
+            "state": "closed",
+            "created_at": "2024-03-17T14:51:28Z"
+        },
+        {
+            "login": "phoenix_blaze",
+            "labels": [
+                "documentation"
+            ],
+            "name": "[Documentation] Interface Design of application",
+            "state": "open",
+            "created_at": "2024-03-12T02:15:30Z"
+        },
+        {
+            "login": "crimson_tiger",
+            "labels": [],
+            "name": "Issue testing",
+            "state": "closed",
+            "created_at": "2024-02-07T02:55:53Z"
+        }
+    ],
+    "comments": [
+        {
+            "user_login": "crimson_tiger",
+            "created_at": "2024-02-07T02:56:02Z"
+        },
+        {
+            "user_login": "crimson_tiger",
+            "created_at": "2024-02-07T02:56:07Z"
+        },
+        {
+            "user_login": "crimson_tiger",
+            "created_at": "2024-02-07T02:56:14Z"
+        },
+        {
+            "user_login": "phoenix_blaze",
+            "created_at": "2024-03-17T15:22:28Z"
+        },
+        {
+            "user_login": "j-davis-321",
+            "created_at": "2024-03-26T11:59:28Z"
+        },
+        {
+            "user_login": "j-davis-321",
+            "created_at": "2024-03-26T12:06:35Z"
+        },
+        {
+            "user_login": "j-davis-321",
+            "created_at": "2024-03-26T12:14:37Z"
+        },
+        {
+            "user_login": "phoenix_blaze",
+            "created_at": "2024-03-26T16:06:18Z"
+        },
+        {
+            "user_login": "j-davis-321",
+            "created_at": "2024-03-26T16:06:25Z"
+        }
+    ],
+    "commits": [
+        {
+            "author_name": "moonlight_dancer",
+            "author_date": "2024-03-26T16:06:25Z",
+            "stats": {
+                "total": 201,
+                "additions": 179,
+                "deletions": 22
+            }
+        },
+        {
+            "author_name": "j-davis-321",
+            "author_date": "2024-03-18T22:13:54Z",
+            "stats": {
+                "total": 78,
+                "additions": 56,
+                "deletions": 22
+            }
+        },
+        {
+            "author_name": "phoenix_blaze",
+            "author_date": "2024-03-18T11:16:57Z",
+            "stats": {
+                "total": 48,
+                "additions": 26,
+                "deletions": 22
+            }
+        },
+        {
+            "author_name": "phoenix_blaze",
+            "author_date": "2024-03-18T10:54:41Z",
+            "stats": {
+                "total": 114,
+                "additions": 104,
+                "deletions": 10
+            }
+        },
+        {
+            "author_name": "phoenix_blaze",
+            "author_date": "2024-03-17T15:10:01Z",
+            "stats": {
+                "total": 114,
+                "additions": 104,
+                "deletions": 10
+            }
+        },
+        {
+            "author_name": "skywalker89",
+            "author_date": "2024-03-17T15:09:15Z",
+            "stats": {
+                "total": 27,
+                "additions": 26,
+                "deletions": 1
+            }
+        },
+        {
+            "author_name": "phoenix_blaze",
+            "author_date": "2024-03-12T16:07:09Z",
+            "stats": {
+                "total": 594,
+                "additions": 594,
+                "deletions": 0
+            }
+        },
+        {
+            "author_name": "phoenix_blaze",
+            "author_date": "2024-03-12T09:18:25Z",
+            "stats": {
+                "total": 141,
+                "additions": 141,
+                "deletions": 0
+            }
+        },
+        {
+            "author_name": "phoenix_blaze",
+            "author_date": "2024-03-12T09:05:49Z",
+            "stats": {
+                "total": 8,
+                "additions": 4,
+                "deletions": 4
+            }
+        },
+        {
+            "author_name": "phoenix_blaze",
+            "author_date": "2024-03-12T04:40:55Z",
+            "stats": {
+                "total": 111,
+                "additions": 111,
+                "deletions": 0
+            }
+        },
+        {
+            "author_name": "crimson_tiger",
+            "author_date": "2024-02-07T06:40:52Z",
+            "stats": {
+                "total": 52,
+                "additions": 51,
+                "deletions": 1
+            }
+        },
+        {
+            "author_name": "crimson_tiger",
+            "author_date": "2024-02-07T03:38:03Z",
+            "stats": {
+                "total": 182,
+                "additions": 106,
+                "deletions": 76
+            }
+        },
+        {
+            "author_name": "crimson_tiger",
+            "author_date": "2024-02-07T03:10:15Z",
+            "stats": {
+                "total": 133,
+                "additions": 57,
+                "deletions": 76
+            }
+        },
+        {
+            "author_name": "crimson_tiger",
+            "author_date": "2024-02-07T02:44:45Z",
+            "stats": {
+                "total": 88,
+                "additions": 81,
+                "deletions": 7
+            }
+        },
+        {
+            "author_name": "crimson_tiger",
+            "author_date": "2024-02-07T02:29:49Z",
+            "stats": {
+                "total": 21,
+                "additions": 21,
+                "deletions": 0
+            }
+        }
+    ],
+    "pull_requests": [
+        {
+            "state": "open",
+            "login": "crimson_tiger",
+            "created_at": "2024-03-20T09:57:42Z",
+            "closed_at": null
+        },
+        {
+            "state": "open",
+            "login": "phoenix_blaze",
+            "created_at": "2024-03-18T10:54:24Z",
+            "closed_at": null
+        }
+    ],
+    "milestones": [
+        {
+            "title": "Backlog",
+            "open_issues": 4,
+            "closed_issues": 1,
+            "state": "open",
+            "created_at": "2024-03-01T10:30:19Z",
+            "updated_at": "2024-03-24T02:28:28Z",
+            "due_on": null,
+            "closed_at": null
+        },
+        {
+            "title": "Backlog Candidates",
+            "open_issues": 2,
+            "closed_issues": 1,
+            "state": "closed",
+            "created_at": "2024-02-01T10:30:19Z",
+            "updated_at": "2024-02-28T02:28:28Z",
+            "due_on": null,
+            "closed_at": null
+        }
+    ],
+    "dates": [
+        {
+            "date": "2024-03-12",
+            "events": {
+                "comments": 0,
+                "pull_requests": 0,
+                "issues": 1,
+                "commits": 4
+            },
+            "contributors": {
+                "phoenix_blaze": {
+                    "commits": 4,
+                    "pull_requests": 0,
+                    "issues": 1,
+                    "comments": 0,
+                    "metrics": 14
+                }
+            },
+            "total_metrics": 14
+        },
+        {
+            "date": "2024-02-07",
+            "events": {
+                "comments": 3,
+                "pull_requests": 0,
+                "issues": 1,
+                "commits": 5
+            },
+            "contributors": {
+                "crimson_tiger": {
+                    "commits": 5,
+                    "pull_requests": 0,
+                    "issues": 1,
+                    "comments": 3,
+                    "metrics": 20
+                }
+            },
+            "total_metrics": 20
+        },
+        {
+            "date": "2024-03-18",
+            "events": {
+                "comments": 0,
+                "pull_requests": 1,
+                "issues": 3,
+                "commits": 3
+            },
+            "contributors": {
+                "phoenix_blaze": {
+                    "commits": 2,
+                    "pull_requests": 1,
+                    "issues": 1,
+                    "comments": 0,
+                    "metrics": 11
+                },
+                "j-davis-321": {
+                    "commits": 1,
+                    "pull_requests": 0,
+                    "issues": 2,
+                    "comments": 0,
+                    "metrics": 4
+                }
+            },
+            "total_metrics": 17
+        },
+        {
+            "date": "2024-03-17",
+            "events": {
+                "comments": 1,
+                "pull_requests": 0,
+                "issues": 1,
+                "commits": 2
+            },
+            "contributors": {
+                "phoenix_blaze": {
+                    "commits": 1,
+                    "pull_requests": 0,
+                    "issues": 1,
+                    "comments": 1,
+                    "metrics": 6
+                },
+                "skywalker89": {
+                    "commits": 1,
+                    "pull_requests": 0,
+                    "issues": 0,
+                    "comments": 0,
+                    "metrics": 3
+                }
+            },
+            "total_metrics": 9
+        },
+        {
+            "date": "2024-03-20",
+            "events": {
+                "comments": 0,
+                "pull_requests": 1,
+                "issues": 0,
+                "commits": 0
+            },
+            "contributors": {
+                "crimson_tiger": {
+                    "commits": 0,
+                    "pull_requests": 1,
+                    "issues": 0,
+                    "comments": 0,
+                    "metrics": 4
+                }
+            },
+            "total_metrics": 4
+        },
+        {
+            "date": "2024-03-26",
+            "events": {
+                "comments": 5,
+                "pull_requests": 0,
+                "issues": 0,
+                "commits": 1
+            },
+            "contributors": {
+                "phoenix_blaze": {
+                    "commits": 0,
+                    "pull_requests": 0,
+                    "issues": 0,
+                    "comments": 1,
+                    "metrics": 1
+                },
+                "j-davis-321": {
+                    "commits": 0,
+                    "pull_requests": 0,
+                    "issues": 0,
+                    "comments": 4,
+                    "metrics": 4
+                },
+                "moonlight_dancer": {
+                    "commits": 1,
+                    "pull_requests": 0,
+                    "issues": 0,
+                    "comments": 0,
+                    "metrics": 3
+                }
+            },
+            "total_metrics": 8
+        }
+    ]
+};
+	
+	 document.getElementById("gp1-data").innerHTML = JSON.stringify(gp1Data);
+	 document.getElementById("gp2-data").innerHTML = JSON.stringify(gp2Data);
+	 document.getElementById("gp3-data").innerHTML = JSON.stringify(gp3Data);
+  </script>
+
+
+
+</body>
+</html>

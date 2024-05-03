@@ -1,0 +1,267 @@
+{
+    "group_name": "project-group2",
+    "collaborators": [
+        "John-Doe",
+        "Jane-Smith",
+        "Alex-Johnson",
+        "Michael-Brown",
+        "Emily-Clark"
+    ],
+    "contributors": [
+        {
+            "login": "Jane-Smith",
+            "contributions": 1
+        },
+        {
+            "login": "Alex-Johnson",
+            "contributions": 1
+        },
+        {
+            "login": "Emily-Clark",
+            "contributions": 1
+        }
+    ],
+    "issues": [
+        {
+            "login": "Alex-Johnson",
+            "labels": [],
+            "name": "【Statement】 About the commit method",
+            "state": "open",
+            "created_at": "2024-03-26T15:55:54Z"
+        },
+        {
+            "login": "John-Doe",
+            "labels": [],
+            "name": "PULLS",
+            "state": "open",
+            "created_at": "2024-03-26T15:52:36Z"
+        },
+        {
+            "login": "Alex-Johnson",
+            "labels": [],
+            "name": "【Problem】About the data",
+            "state": "open",
+            "created_at": "2024-03-26T15:43:21Z"
+        },
+        {
+            "login": "Michael-Brown",
+            "labels": [],
+            "name": "Prototype",
+            "state": "closed",
+            "created_at": "2024-03-25T12:43:16Z"
+        },
+        {
+            "login": "John-Doe",
+            "labels": [],
+            "name": "Synchronize the code of the main branch",
+            "state": "closed",
+            "created_at": "2024-03-22T07:40:59Z"
+        },
+        {
+            "login": "John-Doe",
+            "labels": [],
+            "name": "Initialize java project",
+            "state": "open",
+            "created_at": "2024-03-22T07:23:37Z"
+        },
+        {
+            "login": "Emily-Clark",
+            "labels": [],
+            "name": "Prototype demo v1.1",
+            "state": "open",
+            "created_at": "2024-03-21T03:27:59Z"
+        },
+        {
+            "login": "Michael-Brown",
+            "labels": [],
+            "name": "Prototype demo v1.0",
+            "state": "open",
+            "created_at": "2024-03-20T09:53:21Z"
+        }
+    ],
+    "comments": [
+        {
+            "user_login": "Alex-Johnson",
+            "created_at": "2024-03-26T15:46:41Z"
+        },
+        {
+            "user_login": "John-Doe",
+            "created_at": "2024-03-26T15:47:48Z"
+        },
+        {
+            "user_login": "John-Doe",
+            "created_at": "2024-03-26T15:49:35Z"
+        },
+        {
+            "user_login": "John-Doe",
+            "created_at": "2024-03-26T15:51:14Z"
+        },
+        {
+            "user_login": "John-Doe",
+            "created_at": "2024-03-26T15:51:42Z"
+        },
+        {
+            "user_login": "John-Doe",
+            "created_at": "2024-03-26T15:52:04Z"
+        },
+        {
+            "user_login": "Alex-Johnson",
+            "created_at": "2024-03-26T15:57:32Z"
+        },
+        {
+            "user_login": "John-Doe",
+            "created_at": "2024-03-26T15:58:40Z"
+        }
+    ],
+    "commits": [
+        {
+            "author_name": "Emily-Clark",
+            "author_date": "2024-03-25T10:56:42Z",
+            "stats": {
+                "total": 3,
+                "additions": 3,
+                "deletions": 0
+            }
+        },
+        {
+            "author_name": "Jane-Smith",
+            "author_date": "2024-03-18T13:10:21Z",
+            "stats": {
+                "total": 3,
+                "additions": 3,
+                "deletions": 0
+            }
+        },
+        {
+            "author_name": "Alex-Johnson",
+            "author_date": "2024-03-18T12:50:11Z",
+            "stats": {
+                "total": 4,
+                "additions": 2,
+                "deletions": 2
+            }
+        }
+    ],
+    "pull_requests": [
+        {
+            "state": "closed",
+            "login": "Michael-Brown",
+            "created_at": "2024-03-25T12:43:16Z",
+            "closed_at": "2024-03-25T12:44:54Z"
+        },
+        {
+            "state": "closed",
+            "login": "John-Doe",
+            "created_at": "2024-03-22T07:40:58Z",
+            "closed_at": "2024-03-22T12:39:28Z"
+        },
+        {
+            "state": "open",
+            "login": "John-Doe",
+            "created_at": "2024-03-22T07:23:37Z",
+            "closed_at": null
+        }
+    ],
+    "milestones": [
+        {
+            "title": "March 2024",
+            "open_issues": 5,
+            "closed_issues": 0,
+            "state": "open",
+            "created_at": "2024-03-01T10:30:19Z",
+            "updated_at": "2024-03-24T02:28:28Z",
+            "due_on": "2024-03-31T23:59:00Z",
+            "closed_at": null
+        },
+        {
+            "title": "February 2024",
+            "open_issues": 0,
+            "closed_issues": 3,
+            "state": "closed",
+            "created_at": "2024-02-01T10:30:19Z",
+            "updated_at": "2024-02-28T02:28:28Z",
+            "due_on": "2024-02-29T23:59:00Z",
+            "closed_at": "2024-02-29T23:59:00Z"
+        }
+    ],
+    "dates": [
+        {
+            "date": "2024-03-18",
+            "events": {
+                "comments": 0,
+                "pull_requests": 0,
+                "issues": 0,
+                "commits": 2
+            },
+            "contributors": {
+                "Jane-Smith": {
+                    "commits": 1,
+                    "pull_requests": 0,
+                    "issues": 0,
+                    "comments": 0,
+                    "metrics": 3
+                },
+                "Alex-Johnson": {
+                    "commits": 1,
+                    "pull_requests": 0,
+                    "issues": 0,
+                    "comments": 0,
+                    "metrics": 3
+                }
+            },
+            "total_metrics": 6
+        },
+        {
+            "date": "2024-03-25",
+            "events": {
+                "comments": 0,
+                "pull_requests": 1,
+                "issues": 1,
+                "commits": 1
+            },
+            "contributors": {
+                "Emily-Clark": {
+                    "commits": 1,
+                    "pull_requests": 0,
+                    "issues": 0,
+                    "comments": 0,
+                    "metrics": 3
+                },
+                "Michael-Brown": {
+                    "commits": 0,
+                    "pull_requests": 1,
+                    "issues": 1,
+                    "comments": 0,
+                    "metrics": 6
+                }
+            },
+            "total_metrics": 9
+        },
+        {
+            "date": "2024-03-26",
+            "events": {
+                "comments": 8,
+                "pull_requests": 2,
+                "issues": 3,
+                "commits": 0
+            },
+            "contributors": {
+                "Alex-Johnson": {
+                    "commits": 0,
+                    "pull_requests": 0,
+                    "issues": 2,
+                    "comments": 2,
+                    "metrics": 4
+                },
+                "John-Doe": {
+                    "commits": 0,
+                    "pull_requests": 1,
+                    "issues": 1,
+                    "comments": 6,
+                    "metrics": 8
+                }
+            },
+            "total_metrics": 12
+        }
+    ]
+}
